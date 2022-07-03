@@ -47,19 +47,29 @@ nomad coder movie web servise
 - React Js와 같지만 HTML 스러운 문법, 더욱 보기가 편함
 - 확장팩이기 때문에 JSX문법을 브라우저가 인식할 수 있도록 번역을 해줄 필요가 있다
 - React componet를 만들 때 이름의 첫번째 글자를 대문자로 해야 함(HTML Tag와 중복되는 것을 방지)
+- jsx에서는 `for`, `class`와 같은 js의 예약어와 겹치는 태그들을 html처럼 사용하면 오류가 남-> `htmlFor`, `className`
 
 ### Babel
-JSX는 브라우저가 invalid하게 받기 때문에 이를 이해할 수 있도록 JSX -> React Js 하는 작업을 수행
+- JSX는 브라우저가 invalid하게 받기 때문에 이를 이해할 수 있도록 JSX -> React Js 하는 작업을 수행
 
-React state
+# React state
+- 새로운 업데이트가 필요할 때 정보를 react에서 저장하고 rerender할 수 있다
+`const [state, setState] = React.useState('default state value');`
+- state는 default값을 가지고 setState()를 이용하면 state가 없데이트 되면서 rerender된다
+- ex)
+```react
+const [count, setCount] = React.useState(0);
+const onClick = () => {
+    setCounter(counter + 1);
+    //setCounter((current)=> current + 1);
+    //함수를 넣으면 함수를 실행
+};
+```    
+- state ->  생성된 변수
+- setState -> 생성된 변수에 대한 함수 -> setState(n) state의 값을 n으로 변경
+- setState(state's changing) -> 변수를 변경하면 rerender함
 
-    const [state, setState] = React.useState('default state value');
-    
-state ->  생성된 변수
-setState -> 생성된 변수에 대한 함수 -> setState(n) state의 값을 n으로 변경
-setState(state + 1) -> 변수를 변경하면 rerender함
 
-JSX에서는 HTML과 문법이 유사하지만 js에서 사용되는 html태그와 같은 예약어들은 js의 문법을 따르거나 htmlFor 등 다른 명령어 사용
 
 prop -> 인자(argument) : Object의 형태로 전달 됨 `<Btn text = {"Text"} />`
 
