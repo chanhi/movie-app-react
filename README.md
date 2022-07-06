@@ -143,3 +143,15 @@ const Router = () => {
 - `path=""`로 url경로 설정, `element=`로 해당 url에 띄울 component 설정
 `import {Link} from "react-router-dom"`
 - `<Link to="/other"></Link>` a 태그와 다르게 component들이 새로고침 되지 않으면서 이동 됨
+- props(전달인자 받기) `import {useParams} from "react-router-dom"`로 `useParams` import
+```
+~~~
+<Route path="/page/:id" element={<Page />} />
+~~~
+
+const PageProp = () => {
+    const {id} = useParams();
+    return <h1>`${id}`</h1>
+}
+```
+- `:propName` 을 url에 넣어서 전달하고 `useParams()`를 통해 변수로 전달받는다.
