@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import React, { useCallback, useEffect, useState } from "react";
+import styles from "./Detail.module.css";
 
 function Detail() {
   const [loading, setLoading] = useState(true);
@@ -22,15 +23,27 @@ function Detail() {
   return (
     <div>
       {loading ? (
-        <h1>Loading</h1>
+        <h1 className={styles.loader}>Loading</h1>
       ) : (
-        <div>
-          <img src={detail.medium_cover_image} alt="" />
-          <h1>{detail.title}</h1>
-          <h3>{detail.description_full}</h3>
-          <span>{detail.year}</span>
-          <hr></hr>
-          <span>{detail.rating}</span>
+        <div className={styles.detail}>
+          <div className={styles.detail__main}>
+            <h1 className={styles.detail__title}>{detail.title}</h1>
+            <h3 className={styles.detail__description}>
+              {detail.description_full}
+            </h3>
+            <ul className={styles.detail__genres}>
+              {detail.genres == null
+                ? ""
+                : detail.genres.map((g) => <li key={g}>{g}</li>)}
+            </ul>
+            <div>개봉일자 {detail.year}</div>
+            <div>평점 {detail.rating}</div>
+          </div>
+          <img
+            src={detail.medium_cover_image}
+            alt={detail.title}
+            className={styles.detail__img}
+          />
         </div>
       )}
     </div>
